@@ -31,14 +31,11 @@ extension SecondWindow: CLLocationManagerDelegate {
                 } else {
                     ibeacons.append(Model(uuid: beacon.uuid, major: beacon.major, minor: beacon.minor, rssi: beacon.rssi, proximity: beacon.accuracy.binade))
                 }
-
+                
                 if typeDevice == "iBeacon" {
                     let newModel = searchModel(model: beconModel!)
                     setParamBeacon(findModel: newModel)
-                } else {
-                    setParamBle(findModel: bleModel!)
                 }
-                
             }
            
         } else {

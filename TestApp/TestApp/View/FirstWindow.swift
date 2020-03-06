@@ -159,8 +159,8 @@ class FirstWindow: UITableViewController {
         } else {
             let bleModel = bleArray[indexPath.row]
             secondVC.typeDevice = "BLE"
-            secondVC.instanseOfAllVC = self
             secondVC.bleModel = bleModel
+            secondVC.instanseOfAllVC = self
             self.navigationController!.present(navController, animated: true, completion: nil)
         }
     }

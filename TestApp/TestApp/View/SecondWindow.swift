@@ -40,10 +40,10 @@ class SecondWindow: UIViewController {
         
         self.navigationItem.title = "Подробнее"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        //updateValues()
+        
         modelUUID = beconModel?.uuid.uuidString ?? "0E1DFC63-1C6E-4E94-87A2-895A97267022"
         updateValues(uuid: modelUUID)
-       
+        if typeDevice == "BLE" {setParamBle()}
     }
     
     
@@ -63,10 +63,10 @@ class SecondWindow: UIViewController {
         distanceLabel.text = "Дистанция: " + String(findModel.proximity) + " м"
     }
     
-    func setParamBle(findModel: BleModel) {
+    func setParamBle() {
         typeDeviceLabel.text = typeDevice
-        nameLabel.text = "Device: " + (findModel.peripheral?.name)!
-        rssiLabel.text = "RSSI: " + (findModel.lastRSSI)!.stringValue + " dBm"
+        nameLabel.text = "Device: " + (bleModel?.peripheral?.name ?? "Unknown")
+        rssiLabel.text = "RSSI: " + (bleModel?.lastRSSI)!.stringValue + " dBm"
         majorLabel.text = " "
         minorLabel.text = " "
         distanceLabel.text = " "
