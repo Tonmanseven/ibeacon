@@ -73,11 +73,15 @@ class SecondWindow: UIViewController {
     }
     
     func searchModel(model: Model) -> Model {
-        let indexElement = ibeacons.firstIndex {  $0.uuid == model.uuid &&
-                                                    $0.major == model.major &&
-                                                    $0.minor == model.minor
+        if let indexElement = ibeacons.firstIndex(where: { $0.uuid == model.uuid &&
+            $0.major == model.major &&
+            $0.minor == model.minor
+        }) {
+            return ibeacons[indexElement]
+        } else {
+            return model
         }
-        return ibeacons[indexElement!]
+        
     }
 
 }

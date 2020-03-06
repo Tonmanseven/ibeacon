@@ -113,7 +113,7 @@ extension FirstWindow: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        //bprint(peripheral)
+        //print(peripheral)
         for (index, foundPeripheral) in bleArray.enumerated(){
             if foundPeripheral.peripheral?.identifier == peripheral.identifier{
                 bleArray[index].lastRSSI = RSSI

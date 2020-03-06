@@ -58,6 +58,8 @@ class FirstWindow: UITableViewController {
     @objc private func refreshAction(_ sender: Any) {
         self.myRefreshContoll.beginRefreshing()
         startScanning(refreshControll: myRefreshContoll)
+        modelArray.removeAll()
+        controller.startScanning(beaconRegion: controller.getBeaconRegion(uuid: controller.defaultUUID ?? defaultUUID))
     }
     
     @objc func setUUID() {
@@ -149,9 +151,9 @@ class FirstWindow: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let secondVC = self.storyboard?.instantiateViewController(identifier: "detailVC") as! SecondWindow
         let navController = UINavigationController(rootViewController: secondVC)
+        let sortedArray = self.controller.filterModelArray(array: modelArray)
         
         if indexPath.section == 0 {
-            let sortedArray = self.controller.filterModelArray(array: modelArray)
             secondVC.beconModel = sortedArray[indexPath.row]
             secondVC.typeDevice = "iBeacon"
             secondVC.instanseOfAllVC = self
